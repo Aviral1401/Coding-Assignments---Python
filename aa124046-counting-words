@@ -1,0 +1,20 @@
+import string
+
+my_file = 'assignment.txt'
+i = 0
+d = dict()
+with open(my_file, 'r') as f:
+    lines = f.readlines()
+    for line in lines:
+       line = line.strip()
+       line = line.lower()
+       line = line.translate(str.maketrans('','',string.punctuation))
+       i += 1
+       count = line.split(" ")
+       for n in count:
+          if n in d:
+            d[n] = d[n] +1
+          else:
+            d[n] = 1
+    for word in list(d.keys()):
+       print(word, ": ", d[word])
